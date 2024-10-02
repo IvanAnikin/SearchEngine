@@ -3,7 +3,8 @@ import requests
 
 def descargar_libro(id_libro, ruta_descarga):
     url = f'https://www.gutenberg.org/files/{id_libro}/{id_libro}-0.txt'
-
+    if not os.path.exists(ruta_descarga):
+        os.makedirs(ruta_descarga)
     respuesta = requests.get(url)
 
     if respuesta.status_code == 200:
